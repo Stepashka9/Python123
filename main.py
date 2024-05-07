@@ -1,16 +1,27 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import random
+import string
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def generate_password(length):
+    characters = string.ascii_letters + string.digits
+    password = ''
+    for _ in range(length):
+        password += random.choice(characters)
+    return password
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def generate_passwords(number, length):
+    passwords = set()
+    while len(passwords) < number:
+        password = generate_password(length)
+        passwords.add(password)
+    return list(passwords)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+N = int(input("Введите N: "))
+K = int(input("Введите K: "))
+
+passwords = generate_passwords(N, K)
+
+for password in passwords:
+    print(password)
