@@ -1,15 +1,26 @@
-def sum_of_digits(number):
-    return sum(int(digit) for digit in str(number))
+def sum_of_digits(num):
+    return sum(int(digit) for digit in str(num))
 
-
-def find_number_with_max_digit_sum(numbers):
+def find_max_sum_number(numbers):
     max_sum = 0
-    number_with_max_sum = None
+    max_number = None
 
-    for number in numbers:
-        current_sum = sum_of_digits(number)
+    for num in numbers:
+        current_sum = sum_of_digits(num)
         if current_sum > max_sum:
             max_sum = current_sum
-            number_with_max_sum = number
+            max_number = num
 
-    return number_with_max_sum
+    return max_number
+
+if __name__ == "__main__":
+    N = int(input("Введите количество целых чисел: "))
+    numbers = []
+
+    for i in range(N):
+        num = int(input("Введите число: "))
+        numbers.append(num)
+
+    max_number = find_max_sum_number(numbers)
+
+    print(f"Число с максимальной суммой цифр: {max_number}")
